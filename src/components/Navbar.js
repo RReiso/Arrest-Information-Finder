@@ -1,31 +1,28 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-	const navRef = useRef();
-	const hamRef = useRef();
+	const [isOpen, setIsOpen] = useState(false);
 
 	function toggleHamburger() {
-		navRef.current.classList.toggle("showNav");
-		if (hamRef.current.getAttribute("aria-expanded") == "false") {
-			hamRef.current.setAttribute("aria-expanded", "true");
-		} else {
-			hamRef.current.setAttribute("aria-expanded", "false");
-		}
+		setIsOpen(!isOpen);
 	}
 	return (
 		<>
 			<div className="nav-line">
 				<button
 					id="hamburger"
-					aria-Expanded="false"
-					ref={hamRef}
+					aria-expanded={isOpen === true ? "true" : "false"}
 					onClick={toggleHamburger}
 				>
 					&#9776;
 				</button>
 			</div>
-			<nav id="navbar" className="nav" ref={navRef}>
+			<nav
+				id="navbar"
+				className={isOpen === true ? "nav showNav" : "nav"}
+				aria-expanded={isOpen === true ? "true" : "false"}
+			>
 				<ul className="nav-list">
 					<li className="nav-link" onClick={toggleHamburger}>
 						<Link to="/">Home</Link>
