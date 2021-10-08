@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import { useGlobalContext } from "../context";
 import TextInput from "../components/TextInput";
 import Dropdown from "../components/Dropdown";
@@ -7,8 +7,14 @@ const URL =
 	" https://serene-stream-71987.herokuapp.com/https://www.JailBase.com/api/1/search/?source_id=";
 
 const Search = () => {
-	const { textInput, dropdown, setTextInput, setDropdown, setLoading } =
-		useGlobalContext();
+	const {
+		textInput,
+		dropdown,
+		setTextInput,
+		setDropdown,
+		setLoading,
+		setPeople,
+	} = useGlobalContext();
 	const firstUpdate = useRef(true);
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -17,15 +23,21 @@ const Search = () => {
 	};
 
 	const fetchPeople = async () => {
-		console.log(`${URL}${dropdown}&last_name=${textInput}`);
-		console.log("heer");
-		setLoading(true);
-		const response = await fetch(`${URL}${dropdown}&last_name=${textInput}`);
-		const data = await response.json();
-		console.log(data);
 		try {
+			setLoading(true);
+			const response = await fetch(`${URL}${dropdown}&last_name=${textInput}`);
+			const data = await response.json();
+			const { records } = data;
+      console.log(data)
+      setLoading(false);
+			if (records) {
+				setPeople(records);
+			} else {
+				setPeople([]);
+			};
 		} catch (error) {
 			console.error(error);
+			// setLoading(false);
 		}
 	};
 
@@ -34,9 +46,6 @@ const Search = () => {
 			firstUpdate.current = false;
 			return;
 		}
-		console.log("KAKAKAKA");
-		console.log(textInput);
-		console.log(dropdown);
 		fetchPeople();
 	}, [textInput, dropdown]);
 

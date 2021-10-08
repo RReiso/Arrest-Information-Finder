@@ -21,7 +21,6 @@ const Navbar = () => {
 			<nav
 				id="navbar"
 				className={isOpen === true ? "nav showNav" : "nav"}
-				aria-expanded={isOpen === true ? "true" : "false"}
 			>
 				<ul className="nav-list">
 					<li className="nav-link" onClick={toggleHamburger}>
