@@ -3,30 +3,22 @@ import { Link } from "react-router-dom";
 
 const Person = (props) => {
 	console.log(props);
-	const { county_state, name, charges, id } = props.person;
+	const { name, id, mugshot, book_date_formatted } = props.person;
 	return (
 		<div className="person">
+      <img src={mugshot} alt="mugshot" className="mugshot" />
 			<p>
 				<span className="property">Name: </span>
 				<span className="property-value">{name}</span>
 			</p>
 			<p>
-				<span className="property">Charges: </span>
-				<span className="property-value">
-					{charges.map((ch) => {
-						if (ch === charges[charges.length - 1]) {
-							return `${ch}.`;
-						} else {
-							return `${ch}, `;
-						}
-					})}
-				</span>
+				<span className="property">Booked: </span>
+				<span className="property-value">{book_date_formatted}</span>
 			</p>
-			<p>
-				<span className="property">County, State: </span>
-				<span className="property-value">{county_state}</span>
-			</p>
-			<Link to="/person/:id">Details</Link>
+			
+			<Link to={{ pathname: `/person/${id}`, person: props.person }}>
+				Details
+			</Link>
 		</div>
 	);
 };

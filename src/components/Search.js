@@ -28,7 +28,7 @@ const Search = () => {
 			const response = await fetch(`${URL}${dropdown}&last_name=${textInput}`);
 			const data = await response.json();
 			const { records } = data;
-      console.log(data)
+      // console.log(data)
       setLoading(false);
 			if (records) {
 				setPeople(records);
@@ -37,7 +37,7 @@ const Search = () => {
 			};
 		} catch (error) {
 			console.error(error);
-			// setLoading(false);
+			setLoading(false);
 		}
 	};
 
