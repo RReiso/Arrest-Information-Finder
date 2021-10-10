@@ -7,7 +7,6 @@ import Navbar from "./components/Navbar";
 
 function App() {
 	return (
-		<div>
 			<BrowserRouter>
 				<header>
 					<Navbar />
@@ -24,7 +23,6 @@ function App() {
 					</Route>
 				</Switch>
 			</BrowserRouter>
-		</div>
 	);
 }
 

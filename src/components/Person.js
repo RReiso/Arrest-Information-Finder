@@ -15,12 +15,10 @@ const Person = (props) => {
 				<span className="property">Booked: </span>
 				<span className="property-value">{book_date_formatted}</span>
 			</p>
-      <PersonInfo person={props.person} isModalOpen={isModalOpen} />
+			<PersonInfo person={props.person} isModalOpen={isModalOpen} />
 			<a
 				href={`#${id}`}
-				className={
-					isModalOpen ? "link grey" : "link blue"
-				}
+				className={isModalOpen ? "link blue" : "link"}
 				onClick={() => {
 					setIsModalOpen(!isModalOpen);
 				}}

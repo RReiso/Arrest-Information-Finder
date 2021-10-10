@@ -49,7 +49,7 @@ const Search = () => {
 		<form className="form" onSubmit={handleSubmit}>
 			<TextInput />
 			<Dropdown />
-			<button type="submit">Search</button>
+			<button className="btn" type="submit">Search</button>
 		</form>
 	);
 };

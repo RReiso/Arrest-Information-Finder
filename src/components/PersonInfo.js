@@ -15,9 +15,9 @@ const PersonInfo = (props) => {
 						<span className="property-value">
 							{charges.map((ch, idx) => {
 								if (idx === charges.length - 1) {
-									return `${ch}.`;
+									return `${ch}`;
 								} else {
-									return `${ch}, `;
+									return `${ch}; `;
 								}
 							})}
 						</span>

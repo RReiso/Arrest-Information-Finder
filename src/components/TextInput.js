@@ -3,7 +3,8 @@ import React from "react";
 const TextInput = () => {
 	return (
 		<>
-			<input type="text" required></input>
+			<label htmlFor="name">Last name:</label>
+			<input className="select" type="text" id="name" required></input>
 		</>
 	);
 };
