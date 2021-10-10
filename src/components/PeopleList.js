@@ -9,7 +9,6 @@ const PeopleList = () => {
 	if (loading) {
 		return <Loading />;
 	}
-
 	if (people.length === 0) {
 		return <p>No matches were found!</p>;
 	}

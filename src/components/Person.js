@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import PersonInfo from "./PersonInfo";
 
 const Person = (props) => {
-	console.log(props);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { name, id, mugshot, book_date_formatted } = props.person;
 	return (
-		<div className="person">
-      <img src={mugshot} alt="mugshot" className="mugshot" />
+		<div className="person" id={id}>
+			<img src={mugshot} alt="mugshot" className="mugshot" />
 			<p>
 				<span className="property">Name: </span>
 				<span className="property-value">{name}</span>
@@ -15,10 +15,18 @@ const Person = (props) => {
 				<span className="property">Booked: </span>
 				<span className="property-value">{book_date_formatted}</span>
 			</p>
-			
-			<Link to={{ pathname: `/person/${id}`, person: props.person }}>
-				Details
-			</Link>
+      <PersonInfo person={props.person} isModalOpen={isModalOpen} />
+			<a
+				href={`#${id}`}
+				className={
+					isModalOpen ? "link grey" : "link blue"
+				}
+				onClick={() => {
+					setIsModalOpen(!isModalOpen);
+				}}
+			>
+				{isModalOpen ? "Less details" : "More details"}
+			</a>
 		</div>
 	);
 };

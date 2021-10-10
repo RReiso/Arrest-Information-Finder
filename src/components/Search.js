@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef, useCallback, useState } from "react";
 import { useGlobalContext } from "../context";
 import TextInput from "../components/TextInput";
 import Dropdown from "../components/Dropdown";
@@ -7,39 +7,35 @@ const URL =
 	" https://serene-stream-71987.herokuapp.com/https://www.JailBase.com/api/1/search/?source_id=";
 
 const Search = () => {
-	const {
-		textInput,
-		dropdown,
-		setTextInput,
-		setDropdown,
-		setLoading,
-		setPeople,
-	} = useGlobalContext();
 	const firstUpdate = useRef(true);
+	const [textInput, setTextInput] = useState("");
+	const [dropdown, setDropdown] = useState("");
+	const { setLoading, setPeople } = useGlobalContext();
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setTextInput(e.target[0].value);
 		setDropdown(e.target[1].value);
 	};
 
-	const fetchPeople = async () => {
+	const fetchPeople = useCallback(async () => {
+		console.log("fethching");
 		try {
 			setLoading(true);
 			const response = await fetch(`${URL}${dropdown}&last_name=${textInput}`);
 			const data = await response.json();
 			const { records } = data;
-      // console.log(data)
-      setLoading(false);
+			setLoading(false);
 			if (records) {
 				setPeople(records);
 			} else {
 				setPeople([]);
-			};
+			}
 		} catch (error) {
 			console.error(error);
 			setLoading(false);
 		}
-	};
+	}, [textInput, dropdown, setLoading, setPeople]);
 
 	useEffect(() => {
 		if (firstUpdate.current) {
@@ -47,7 +43,7 @@ const Search = () => {
 			return;
 		}
 		fetchPeople();
-	}, [textInput, dropdown]);
+	}, [textInput, dropdown, fetchPeople]);
 
 	return (
 		<form className="form" onSubmit={handleSubmit}>

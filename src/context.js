@@ -3,8 +3,6 @@ import React, { useState, useContext } from "react";
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
 	const [loading, setLoading] = useState(false);
-	const [textInput, setTextInput] = useState("");
-	const [dropdown, setDropdown] = useState("");
 	const [people, setPeople] = useState(["0"]);
 
 	return (
@@ -12,10 +10,6 @@ const AppProvider = ({ children }) => {
 			value={{
 				loading,
 				people,
-				textInput,
-				dropdown,
-				setTextInput,
-				setDropdown,
 				setLoading,
 				setPeople,
 			}}

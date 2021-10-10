@@ -1,11 +1,7 @@
-
 import React from "react";
 import countyData from "../county-jail-data.json";
-// import { useGlobalContext } from "../context";
 
 const Dropdown = () => {
-	// const { setDropdown } = useGlobalContext();
-
 	return (
 		<>
 			<label htmlFor="organisations">Sheriff's office:</label>

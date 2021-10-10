@@ -1,11 +1,9 @@
 import React from "react";
-// import { useGlobalContext } from "../context";
 
 const TextInput = () => {
-	// const { textInput, setTextInput } = useGlobalContext();
 	return (
 		<>
-			<input type="text" required ></input>
+			<input type="text" required></input>
 		</>
 	);
 };

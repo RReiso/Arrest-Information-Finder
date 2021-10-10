@@ -18,10 +18,7 @@ const Navbar = () => {
 					&#9776;
 				</button>
 			</div>
-			<nav
-				id="navbar"
-				className={isOpen === true ? "nav showNav" : "nav"}
-			>
+			<nav id="navbar" className={isOpen === true ? "nav showNav" : "nav"}>
 				<ul className="nav-list">
 					<li className="nav-link" onClick={toggleHamburger}>
 						<Link to="/">Home</Link>
