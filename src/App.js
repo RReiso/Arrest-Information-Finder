@@ -6,24 +6,24 @@ import Error from "./pages/Error";
 import Navbar from "./components/Navbar";
 
 function App() {
-	return (
-			<BrowserRouter>
-				<header>
-					<Navbar />
-				</header>
-				<Switch>
-					<Route exact path="/">
-						<Home />
-					</Route>
-					<Route path="/about">
-						<About />
-					</Route>
-					<Route path="*">
-						<Error />
-					</Route>
-				</Switch>
-			</BrowserRouter>
-	);
+  return (
+    <BrowserRouter>
+      <header>
+        <Navbar />
+      </header>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="*">
+          <Error />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
 export default App;
