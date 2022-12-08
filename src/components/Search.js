@@ -4,7 +4,7 @@ import TextInput from "../components/TextInput";
 import Dropdown from "../components/Dropdown";
 
 const URL =
-  " https://serene-stream-71987.herokuapp.com/https://www.JailBase.com/api/1/search/?source_id=";
+  "https://cors-anywhere-beta-three.vercel.app/https://www.JailBase.com/api/1/search/?source_id=";
 
 const Search = () => {
   const firstUpdate = useRef(true);
