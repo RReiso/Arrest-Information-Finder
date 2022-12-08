@@ -4,7 +4,7 @@ import TextInput from "../components/TextInput";
 import Dropdown from "../components/Dropdown";
 
 const URL =
-  "https://fast-dawn-89938.herokuapp.com/https://www.JailBase.com/api/1/search/?source_id=";
+  "https://cors-any.onrender.com/https://www.JailBase.com/api/1/search/?source_id=";
 
 const Search = () => {
   const firstUpdate = useRef(true);
